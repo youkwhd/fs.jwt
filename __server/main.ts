@@ -22,7 +22,7 @@ app.get("/", (_req, res) => {
 })
 
 app.get("/content", middleware.auth, (_req, res) => {
-    res.status(200).json({ err: null, content: "this is a user-only content, you should get it if you have a JWT token"})
+    res.status(200).json({ err: null, content: "This is a user-only content, it will last for 1 minute, you should get it only if you have a JWT token"})
 })
 
 app.post("/login", (req, res) => {
