@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom"
+
 export default (): JSX.Element => {
+    const navigate = useNavigate()
+
     const handleForm = async (e: any) => {
         e.preventDefault()
 
@@ -20,22 +24,7 @@ export default (): JSX.Element => {
          * WARNING: do not use local storage on production
          */
         localStorage.setItem("__token", data.content.token)
-    }
-
-    const fetchUserOnlyData = async () => {
-        const token = localStorage.getItem("__token")
-
-        if (!token)
-            throw new Error("Login first")
-
-        const rawData = await fetch("http://localhost:3000/content", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
-
-        const data = await rawData.json()
-        console.log(data.content)
+        navigate("/")
     }
 
     return (
@@ -45,7 +34,6 @@ export default (): JSX.Element => {
                 <input type="password" name="password" />
                 <button type="submit">submit</button>
             </form>
-            <button onClick={() => fetchUserOnlyData()}>cookei</button>
         </>
     )
 }
