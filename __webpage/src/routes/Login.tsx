@@ -1,7 +1,8 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 export default (): JSX.Element => {
+    const [formError, setFormError] = useState(false)
     const navigate = useNavigate()
 
     const handleForm = async (e: any) => {
@@ -18,9 +19,11 @@ export default (): JSX.Element => {
 
         const data = await rawData.json()
 
-        if (data.err || !data.content)
-            throw new Error("check form input")
-
+        if (data.err || !data.content) {
+            setFormError(true)
+            return
+        }
+            
         /**
          * WARNING: do not use local storage on production
          */
@@ -40,6 +43,9 @@ export default (): JSX.Element => {
                 <input type="password" name="password" />
                 <button type="submit">submit</button>
             </form>
+            {formError && (
+                <p>Check your input again, the username and password could be wrong</p>
+            )}
         </>
     )
 }
