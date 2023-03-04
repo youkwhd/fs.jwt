@@ -6,8 +6,13 @@ export type User = {
     token: Token | null
 }
 
-export default {
+const users: User[] = [{
     "username": "youkwhd",
-    "password": "youkwhd",
+    /**
+     * plain password: youkwhd
+     */
+    "password": "$2b$10$kKdaD/QwU//ACoqz7oBaceqNywOiUX4.uqfVQTnvxgmBnsfl2/tnu",
     "token": null
-} as User
+}]
+
+export default users
