@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 export default (): JSX.Element => {
@@ -26,6 +27,11 @@ export default (): JSX.Element => {
         localStorage.setItem("__token", data.content.token)
         navigate("/")
     }
+
+    useEffect(() => {
+        if (localStorage.getItem("__token"))
+            navigate("/")
+    }, [])
 
     return (
         <>

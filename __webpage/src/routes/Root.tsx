@@ -21,9 +21,10 @@ export default (): JSX.Element => {
             })
 
             const data = await rawData.json()
-
-            if (data.err || !data.content)
+            if (data.err || !data.content) {
+                setSecretContent("Your token is either expired or invalid, try to clear the token and log in again")
                 return
+            }
 
             setSecretContent(data.content as string)
         })()
