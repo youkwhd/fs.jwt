@@ -39,9 +39,22 @@ export default (): JSX.Element => {
     return (
         <>
             <form onSubmit={(e) => handleForm(e)}>
-                <input type="text" name="username" />
-                <input type="password" name="password" />
-                <button type="submit">submit</button>
+                <label>
+                    Username
+                    <br />
+                    <input type="text" name="username" />
+                </label>
+                <br />
+
+                <label>
+                    Password
+                    <br />
+                    <input type="password" name="password" />
+                </label>
+                <br />
+
+                <br />
+                <button type="submit">Submit</button>
             </form>
             {formError && (
                 <p>Check your input again, the username and password could be wrong</p>
