@@ -1,12 +1,12 @@
-import jwt, { VerifyErrors } from "jsonwebtoken"
-import { tokenParse } from "../data/token" 
-import { Request, Response, NextFunction } from "express"
+import jwt from "jsonwebtoken"
+import { tokenParse } from "../lib/token" 
+import type { Request, Response, NextFunction } from "express"
 
 export default (req: Request, res: Response, next: NextFunction) => {
     const rawToken = req["headers"]["authorization"]
 
     if (!rawToken)
-        return res.sendStatus(401)
+        return res.sendStatus(400)
     
     const token = tokenParse(rawToken)
     let isAuthorized = false
@@ -19,7 +19,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
     })
 
     if (!isAuthorized)
-        return res.sendStatus(403)
+        return res.sendStatus(401)
 
     next()
 }
