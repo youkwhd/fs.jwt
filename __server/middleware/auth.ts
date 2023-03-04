@@ -6,7 +6,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
     const rawToken = req["headers"]["authorization"]
 
     if (!rawToken)
-        return res.sendStatus(400)
+        return res.status(400).json({ err: "Token was not present" })
     
     const token = tokenParse(rawToken)
     let isAuthorized = false
@@ -19,7 +19,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
     })
 
     if (!isAuthorized)
-        return res.sendStatus(401)
+        return res.status(401).json({ err: "Token is Invalid" })
 
     next()
 }

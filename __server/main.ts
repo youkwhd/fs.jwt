@@ -1,4 +1,6 @@
 import express from "express"
+import fs from "fs"
+import cors from "cors"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import * as dotenv from "dotenv"
@@ -10,11 +12,17 @@ import type { User } from "./lib/user"
 const app = express()
 dotenv.config()
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.get("/", (_req, res) => {
+    const readmeFileContent = fs.readFileSync(`${__dirname}/../README`)
+    res.send(`<pre>${readmeFileContent}</pre>`)
+})
+
 app.get("/content", middleware.auth, (_req, res) => {
-    res.send("this is a user-only content, you should get it if you have a JWT token")
+    res.status(200).json({ err: null, content: "this is a user-only content, you should get it if you have a JWT token"})
 })
 
 app.post("/login", (req, res) => {
@@ -22,13 +30,13 @@ app.post("/login", (req, res) => {
     const user: User | undefined = data.find((d) => d.username === req.body.username)
 
     if (!user)
-        return res.sendStatus(400)
+        return res.status(400).json({ err: null, content: null})
 
     if (!bcrypt.compareSync(req.body.password, user.password))
-        return res.sendStatus(400)
+        return res.status(400).json({ err: null, content: null})
 
     user.token = jwt.sign(user, process.env.TOKEN_SECRET as string, { expiresIn: "1h" })
-    res.sendStatus(200)
+    res.json({ err: null, content: { token: user.token }})
 })
 
 app.all("*", (_req, res) => {
