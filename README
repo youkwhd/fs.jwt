@@ -1,2 +1,22 @@
 fs.auth
 =======
+
+This side project showcases on using JWT as an authorization
+tool, using express as the server. if you don't want to make
+your own HTTP calls, use the __webpage (React) to access the
+server.
+
+However, the React front-end isn't so secure because i rely on
+localStorage since you can't store anything past 4069 B on a
+cookie.
+
+The server assumes the data has already been created, it should
+be located at `__server/data/user.ts`, the registered username
+should be youkwhd and so does for the password, you can tweak
+it as your please.
+
+Making HTTP Calls
+---------------
+
+I have made scripts for this kind of automation, located at
+`__server/scripts/net.sh`
