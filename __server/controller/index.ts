@@ -5,28 +5,28 @@ import notFound from "./404"
 
 import { Router } from "express"
 
-type Controller = {
+export type Controller = {
     [key: string]: {
-        path: string
+        rootPath: string
         router: Router 
     }
 }
 
 export default {
     root: {
-        path: "/",
+        rootPath: "/",
         router: root
     },
     login: {
-        path: "/",
+        rootPath: "/",
         router: login
     },
     content: {
-        path: "/",
+        rootPath: "/",
         router: content
     },
     notFound: {
-        path: "*",
+        rootPath: "*",
         router: notFound
     }
 } as Controller
