@@ -14,7 +14,6 @@ function login() {
 
 function get_content() {
     curl -X GET -H "Authorization: Bearer $1" "$URL/content"
-    echo $1
 }
 
 case $1 in
