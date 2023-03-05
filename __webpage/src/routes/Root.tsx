@@ -32,8 +32,13 @@ export default (): JSX.Element => {
 
     return (
         <>
-            {secretContent && <p>{secretContent}</p>}
-            <Token />
+            <div className="content-wrapper">
+                {secretContent && (
+                    <p>{secretContent}</p>
+                )}
+
+                <Token />
+            </div>
         </>
     )
 }

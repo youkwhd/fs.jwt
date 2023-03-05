@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, NavLink } from "react-router-dom"
 
 export default (): JSX.Element => {
     const [formError, setFormError] = useState(false)
@@ -38,27 +38,41 @@ export default (): JSX.Element => {
 
     return (
         <>
-            <form onSubmit={(e) => handleForm(e)}>
-                <label>
-                    Username
-                    <br />
-                    <input type="text" name="username" />
-                </label>
-                <br />
+            <div className="form-wrapper">
+                <div>
+                    <header>
+                        <h1>Login</h1>
+                        <p>Enjoy exclusive content</p>
+                    </header>
+                    <form onSubmit={(e) => handleForm(e)}>
+                        <div className="form-input">
+                            <label htmlFor="username">Username <span style={{ color: "red" }}>*</span></label>
+                            <input type="text" name="username" required/>
 
-                <label>
-                    Password
-                    <br />
-                    <input type="password" name="password" />
-                </label>
-                <br />
+                            <label htmlFor="password">Password <span style={{ color: "red" }}>*</span></label>
+                            <input type="password" name="password" required />
+                        </div>
+                        <div className="form-forgot">
+                            <label>
+                                <input type="checkbox" name="remember-me" />
+                                Remember me
+                            </label>
 
-                <br />
-                <button type="submit">Submit</button>
-            </form>
-            {formError && (
-                <p>Check your input again, the username and password could be wrong</p>
-            )}
+                            <NavLink to={"/login"}>
+                                Forgot password?
+                            </NavLink>
+                        </div>
+                        <div className="form-submit">
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
+                    {formError && (
+                        <div className="form-error">
+                            <p>Wrong credentials</p>
+                        </div>
+                    )}
+                </div>
+            </div>
         </>
     )
 }

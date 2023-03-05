@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.content-wrapper,
+.form-wrapper,
+.form-submit,
+.form-input,
+.form-forgot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-error,
+.token-util-wrapper,
+.form-wrapper header {
+    margin: 15px 0px;
+}
+
+.form-error {
+    color: red;
+}
+
+.form-wrapper header > * {
+    margin: 10px 0px;
+}
+
+.form-wrapper header > h1 {
+    font-size: 26px;
+}
+
+.content-wrapper {
+    margin: 40px 0px;
+}
+
+.content-wrapper,
+.form-input {
+    flex-direction: column;
+}
+
+.token-util-wrapper > * {
+    margin: 0px 5px;
+}
+
+.form-input > * {
+    margin: 5px 0px;
+}
+
+.form-forgot {
+    justify-content: space-between;
+}
+
+.form-wrapper > div {
+    width: 300px;
+}
+
+.form-input label {
+    width: 100%;
+}
+
+.form-input input[type="text"],
+.form-input input[type="password"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+}
+
+.form-forgot input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.form-forgot {
+    margin-bottom: 5px;
+}
+
+.form-forgot > * {
+    margin: 10px 0px;
+}
+
+.form-submit button {
+    width: 100%;
+    height: 40px;
+}
+
+button {
+    padding: 5px;
+}
