@@ -1,5 +1,5 @@
 fs.jwt
-=======
+======
 
 This side project showcases on using JWT as an authorization
 tool, using express as the server. if you don't want to make
