@@ -1,5 +1,5 @@
 {
-  "name": "fs.auth.webpage",
+  "name": "fs.jwt.webpage",
   "private": true,
   "version": "0.0.0",
   "type": "module",

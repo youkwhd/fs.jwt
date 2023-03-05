@@ -1,4 +1,4 @@
-fs.auth
+fs.jwt
 =======
 
 This side project showcases on using JWT as an authorization
