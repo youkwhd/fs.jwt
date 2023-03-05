@@ -8,11 +8,13 @@ function usage() {
 }
 
 function login() {
-    curl -X POST -H "Content-Type: application/json" "$URL/login" -d '{ "username": "youkwhd", "password": "youkwhd" }'
+    curl -sS -X POST -H "Content-Type: application/json" "$URL/login" -d '{ "username": "youkwhd", "password": "youkwhd" }' > token.json
+    echo "FILE token.json created"
 }
 
 function get_content() {
-    curl -X GET -H "Authorization: Bearer $2" "$URL/content"
+    curl -X GET -H "Authorization: Bearer $1" "$URL/content"
+    echo $1
 }
 
 case $1 in
@@ -25,7 +27,7 @@ case $1 in
             exit
         fi
 
-        content
+        get_content $2
         ;;
     *)
         usage
