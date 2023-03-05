@@ -1,0 +1,14 @@
+{
+  "name": "fs.jwt",
+  "version": "1.0.0",
+  "scripts": {
+    "install:server": "cd __server && yarn install",
+    "install:webpage": "cd __webpage && yarn install",
+    "install": "yarn install:server && yarn install:webpage",
+    "dev:server": "cd __server && yarn dev",
+    "dev:webpage": "cd __webpage && yarn dev"
+  },
+  "repository": "https://github.com/youkwhd/fs.jwt.git",
+  "author": "youkwhd <lolywk@tutanota.com>",
+  "license": "MIT"
+}
