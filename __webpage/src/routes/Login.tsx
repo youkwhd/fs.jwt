@@ -20,6 +20,7 @@ export default (): JSX.Element => {
         const data = await rawData.json()
 
         if (data.err || !data.content) {
+            console.log(data)
             setFormError(true)
             return
         }
@@ -68,7 +69,7 @@ export default (): JSX.Element => {
                     </form>
                     {formError && (
                         <div className="form-error">
-                            <p>Wrong credentials</p>
+                            <p>Error, please check the console log.</p>
                         </div>
                     )}
                 </div>
